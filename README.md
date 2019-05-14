@@ -4,12 +4,18 @@ echoのbindの動作確認
 
 # 実行結果
 
-## 全ての要素をPOST
+## 全ての要素
 
 ### request
 
 ```bash
 curl -D - -X POST http://153.126.139.150:8080/ -H 'Content-Type: application/json' -d '{"userid":"mstn","pw":"hoge"}'
+```
+
+or
+
+```bash
+curl -D - -G http://153.126.139.150:8080 -d userid=mstn -d pw=hoge
 ```
 
 ### response
@@ -26,12 +32,17 @@ Content-Length: 0
 mstn
 ```
 
-## 過剰な要素をポスト
+## 過剰な要素
 
 ### request
 
 ```bash
 curl -D - -X POST http://153.126.139.150:8080/ -H 'Content-Type: application/json' -d '{"userid":"mstn","pw":"hoge", "auth_code":"hoge"}'
+```
+or
+
+```bash
+curl -D - -G http://153.126.139.150:8080 -d userid=mstn -d pw=hoge -d auth_code=hoge
 ```
 
 ### response
@@ -48,12 +59,18 @@ Content-Length: 0
 mstn
 ```
 
-## 要素が不足しているパターン
+## 要素が不足
 
 ### request
 
 ```bash
 curl -D - -X POST http://153.126.139.150:8080/ -H 'Content-Type: application/json' -d '{"userid":"mstn"}'
+```
+
+or
+
+```bash
+curl -D - -G http://153.126.139.150:8080 -d userid=mstn
 ```
 
 ### response
