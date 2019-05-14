@@ -10,6 +10,7 @@ import (
 
 func main() {
     e := echo.New()
+    e.GET("/", test)
     e.POST("/", test)
 
     e.Start(":8080")
