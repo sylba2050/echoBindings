@@ -27,5 +27,7 @@ func test(c echo.Context) error {
         return err
     }
 
+    fmt.Fprintln(os.Stderr, s.UserId)
+
     return c.NoContent(http.StatusOK)
 }
